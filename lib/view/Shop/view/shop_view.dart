@@ -42,13 +42,31 @@ class ShopView extends StatelessWidget {
                     height: 45,
                     width: 50,
                     decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade400,
+                            blurRadius: 6,
+                            spreadRadius: 1,
+                          )
+                        ],
                         borderRadius: BorderRadius.circular(10),
-                        color: ConstantColors().mainBlue),
+                        color: Colors.white),
+                    child: Image.asset("lib/assets/icons/shopping_basket.png"),
+                  ),
+                  const SizedBox(
+                    width: 4,
                   ),
                   Container(
                     height: 45,
                     width: 100,
                     decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade400,
+                            blurRadius: 6,
+                            spreadRadius: 1,
+                          )
+                        ],
                         borderRadius: BorderRadius.circular(10),
                         color: ConstantColors().mainBlue),
                     child: Padding(

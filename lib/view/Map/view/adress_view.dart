@@ -1,11 +1,20 @@
 import 'package:blue_savers/constants/colors.dart';
+import 'package:blue_savers/models/contest.dart';
 import 'package:blue_savers/view/widgets/headline.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
-import '../constants/list.dart';
+import '../../../constants/list.dart';
+import 'adress_location_view.dart';
+import 'google_map_view.dart';
 
 class AdressView extends StatefulWidget {
-  const AdressView({Key? key}) : super(key: key);
+  final Contest contest;
+
+  const AdressView({
+    Key? key,
+    required this.contest,
+  }) : super(key: key);
 
   @override
   State<AdressView> createState() => _AdressViewState();
@@ -19,12 +28,12 @@ class _AdressViewState extends State<AdressView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.grey.shade800,
-            title: const Icon(
-              Icons.map,
-              size: 32,
-              color: Colors.white,
-            )),
+          backgroundColor: ConstantColors().mainBlue,
+          title: Text(
+            widget.contest.point.toString() + " points 🏆",
+            style: TextStyle(fontSize: 22, fontFamily: "Lato"),
+          ),
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -98,22 +107,24 @@ class _AdressViewState extends State<AdressView> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Container(
-        height: 400,
-        width: 320,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Image.asset(
-          "lib/assets/images/map.png",
-          fit: BoxFit.cover,
-        ),
-      ),
+          height: 400,
+          width: 320,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+          ),
+          child: selectedValue == "Maps"
+              ? MapSample(
+                  contest: widget.contest,
+                )
+              : AdressLocationView(
+                  contest: widget.contest,
+                )),
     );
   }
 
   buildContestDetails() {
     return SizedBox(
-      height: 70,
+      height: 80,
       width: 310,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,18 +134,22 @@ class _AdressViewState extends State<AdressView> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Headline(
-                  label: "Çınar Beach",
+                  label: widget.contest.placeName,
                   size: 24,
                   color: ConstantColors().headlineGrey,
                 ),
-                const Text(
-                  "14:00 - 18:00",
-                  style: TextStyle(fontSize: 16, fontFamily: "Lato"),
+                Text(
+                  widget.contest.hours,
+                  style: const TextStyle(fontSize: 16, fontFamily: "Lato"),
+                ),
+                Text(
+                  widget.contest.date,
+                  style: const TextStyle(fontSize: 16, fontFamily: "Lato"),
                 )
               ]),
           Container(
             height: 50,
-            width: 120,
+            width: 90,
             decoration: BoxDecoration(
                 color: ConstantColors().mainBlue,
                 borderRadius: BorderRadius.circular(10)),
@@ -187,11 +202,11 @@ class _AdressViewState extends State<AdressView> {
 
   buildOtherUsersHeadline() {
     return Padding(
-      padding: const EdgeInsets.only(left: 40.0),
+      padding: const EdgeInsets.only(left: 50.0),
       child: Align(
           alignment: Alignment.bottomLeft,
           child: Headline(
-            label: "Attendees",
+            label: "Attendees:",
             size: 18,
             color: ConstantColors().headlineGrey,
           )),

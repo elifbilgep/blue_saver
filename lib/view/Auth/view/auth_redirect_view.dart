@@ -1,4 +1,6 @@
 import 'package:blue_savers/constants/colors.dart';
+import 'package:blue_savers/view/Auth/view/sign_in_view.dart';
+import 'package:blue_savers/view/Auth/view/sign_up_view.dart';
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 
@@ -84,22 +86,35 @@ class AuthRedirectView extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: ConstantColors().mainBlue),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpView()));
+                    },
                     child: const Text(
                       "Join Us",
                       style: TextStyle(fontFamily: "Futura", fontSize: 17),
                     ),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(10),
-                  child: Text(
-                    "Alrady have an account?",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontFamily: "Futura",
-                      decoration: TextDecoration.underline,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInView()));
+                    },
+                    child: const Text(
+                      "Alrady have an account?",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontFamily: "Futura",
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
                 )

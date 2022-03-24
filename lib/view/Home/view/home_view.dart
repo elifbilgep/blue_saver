@@ -1,15 +1,22 @@
+import 'package:blue_savers/models/contest.dart';
+import 'package:blue_savers/services/auth_service.dart';
+import 'package:blue_savers/services/firestore_service.dart';
 import 'package:blue_savers/view/widgets/headline.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../constants/colors.dart';
-import '../constants/list.dart';
-import 'adress_view.dart';
+import '../../../constants/colors.dart';
+import '../../../constants/list.dart';
+import '../../Map/view/adress_view.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  var activeUserId;
+  List<Contest>? contests;
+  HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    activeUserId = Provider.of<Auth>(context, listen: false).activeUserId;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.only(left: 20, top: 60),
@@ -99,73 +106,111 @@ class HomeView extends StatelessWidget {
         ));
   }
 
+  buildList(BuildContext context) {
+    return FutureBuilder(
+        future: FirestoreService().getContests(),
+        builder: (context, dynamic snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          contests = snapshot.data;
+          return buildContestCards();
+        });
+  }
+
   buildContestCards() {
     return SizedBox(
-      height: 270,
-      width: 500,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AdressView()));
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: Container(
-                  width: 310,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Center(
-                          child: SizedBox(
-                            height: 180,
-                            width: 290,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                "lib/assets/images/${Lists().home_contest_places_photo[index]}",
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
+        height: 270,
+        width: 500,
+        child: FutureBuilder(
+            future: FirestoreService().getContests(),
+            builder: (context, dynamic snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              contests = snapshot.data;
+              return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AdressView(
+                                      contest: contests![index],
+                                    )));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Container(
+                          width: 310,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              space1,
-                              Text(
-                                Lists().contest_palces_name[index],
-                                style: const TextStyle(
-                                    fontSize: 16, fontFamily: "Lato"),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                Lists().contest_palces_hour[index],
-                                style: const TextStyle(
-                                    fontSize: 16, fontFamily: "Lato"),
-                              )
-                            ],
-                          ),
-                        )
-                      ]),
-                ),
-              ),
-            );
-          }),
-    );
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Center(
+                                  child: SizedBox(
+                                    height: 170,
+                                    width: 290,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        contests![index].photoURL,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      space1,
+                                      Text(
+                                        contests![index].placeName,
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontFamily: "Lato",
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        contests![index].date,
+                                        style: const TextStyle(
+                                            fontSize: 16, fontFamily: "Lato"),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        contests![index].hours,
+                                        style: const TextStyle(
+                                            fontSize: 16, fontFamily: "Lato"),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ]),
+                        ),
+                      ),
+                    );
+                  });
+            }));
   }
 
   get space1 => const SizedBox(

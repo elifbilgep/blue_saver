@@ -19,7 +19,7 @@ class BlueButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           primary: ConstantColors().mainBlue,
         ),
-        onPressed: () {},
+        onPressed: func,
         child: Text(
           name,
           style: const TextStyle(fontFamily: "Futura", fontSize: 17),

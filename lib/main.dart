@@ -1,7 +1,13 @@
-import 'package:blue_savers/view/bottom_menu_view.dart';
+import 'package:blue_savers/services/auth_service.dart';
+import 'package:blue_savers/services/redirecting.dart';
+import 'package:blue_savers/view/Auth/view/user_detail.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -10,9 +16,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BottomMenu(),
+    //Auth().signOut();
+    return Provider<Auth>(
+      create: (_) => Auth(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Redirecting(),
+      ),
     );
   }
 }

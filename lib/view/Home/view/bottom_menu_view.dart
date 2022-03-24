@@ -1,8 +1,8 @@
 import 'package:blue_savers/constants/colors.dart';
-import 'package:blue_savers/view/home_view.dart';
-import 'package:blue_savers/view/profile_view.dart';
-import 'package:blue_savers/view/qr_view.dart';
-import 'package:blue_savers/view/shop_view.dart';
+import 'package:blue_savers/view/Home/view/home_view.dart';
+import 'package:blue_savers/view/Profile/view/profile_view.dart';
+import 'package:blue_savers/view/Qr/view/qr_view.dart';
+import 'package:blue_savers/view/Shop/view/shop_view.dart';
 import 'package:flutter/material.dart';
 
 class BottomMenu extends StatefulWidget {
@@ -16,11 +16,11 @@ class _BottomMenuState extends State<BottomMenu> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     HomeView(),
-    ShopView(),
-    QrView(),
-    ProfileView(),
+    const ShopView(),
+    const QrView(),
+    const ProfileView(),
   ];
 
   void _onItemTapped(int index) {
