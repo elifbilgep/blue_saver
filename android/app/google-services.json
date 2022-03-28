@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "121149545613",
+    "project_id": "bluesaver-2f664",
+    "storage_bucket": "bluesaver-2f664.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121149545613:android:74b60a73c39261e7ba16c4",
+        "android_client_info": {
+          "package_name": "com.example.blue_savers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121149545613-q44f11goj3seacsp5mc31hndgn6j0uqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.blue_savers",
+            "certificate_hash": "098a7bfed5b6ccf07e2ad32e10a744d9467934cf"
+          }
+        },
+        {
+          "client_id": "121149545613-ntkcrmfe8il24v1ojo2eoem1l3no3ndm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSlwqDnbE9k3zN2-BJkhWAyVrKNq3igIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121149545613-ntkcrmfe8il24v1ojo2eoem1l3no3ndm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "121149545613-u1o9udp5k8v1mqo8a7g5ru96janpp3dm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.blueSavers"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

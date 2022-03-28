@@ -25,12 +25,12 @@ class ShopCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10)),
         child: Stack(clipBehavior: Clip.none, children: [
           Positioned(
-            bottom: 120,
+            bottom: 80,
             child: SizedBox(
-              height: 160,
+              height: 140,
               width: 180,
               child: Image.asset(
-                "lib/assets/images/${Lists().shop_items_images[index]}",
+                "lib/assets/images/${Lists().shopItemsImages[index]}",
                 fit: BoxFit.contain,
               ),
             ),
@@ -75,14 +75,14 @@ class ShopCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  Lists().shop_items_names[index],
+                  Lists().shopItemsNames[index],
                   style: TextStyle(
                       fontFamily: "Futura",
                       fontSize: 21,
                       color: Colors.grey.shade800),
                 ),
                 Text(
-                  Lists().shop_items_prise[index],
+                  Lists().shopItemsPrise[index],
                   style: TextStyle(
                       fontFamily: "Futura",
                       fontSize: 15,

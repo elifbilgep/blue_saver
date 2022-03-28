@@ -194,12 +194,13 @@ class _SignUpViewState extends State<SignUpView> {
     _getCurrentLocation();
     Saver saver = await _authService.createUserWithEmail(userEmail!, password!);
     await FirestoreService().createSaver(
-        id: saver.id,
-        email: userEmail,
-        latitude: _currentPosition?.latitude,
-        longitude: _currentPosition?.longitude,
-        userName: userName,
-        points: 0);
+      id: saver.id,
+      email: userEmail,
+      latitude: _currentPosition?.latitude,
+      longitude: _currentPosition?.longitude,
+      userName: userName,
+      points: 0,
+    );
   }
 
   buildAlreadyHaveOne(BuildContext context) {
@@ -226,7 +227,7 @@ class _SignUpViewState extends State<SignUpView> {
         _currentPosition = position;
       });
     }).catchError((e) {
-      print("anan" + e);
+      throw ("error" + e);
     });
   }
 }

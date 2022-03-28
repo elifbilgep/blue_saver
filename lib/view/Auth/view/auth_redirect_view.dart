@@ -90,7 +90,7 @@ class AuthRedirectView extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignUpView()));
+                              builder: (context) => const SignUpView()));
                     },
                     child: const Text(
                       "Join Us",
@@ -99,7 +99,7 @@ class AuthRedirectView extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(

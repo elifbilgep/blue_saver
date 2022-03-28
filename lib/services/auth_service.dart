@@ -22,6 +22,7 @@ class Auth {
   signInWithEmail(String email, String password) async {
     var userCard = await _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
+    return userCard;
   }
 
   signOut() {

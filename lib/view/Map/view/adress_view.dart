@@ -1,9 +1,8 @@
 import 'package:blue_savers/constants/colors.dart';
 import 'package:blue_savers/models/contest.dart';
+import 'package:blue_savers/view/Profile/view/profile_view.dart';
 import 'package:blue_savers/view/widgets/headline.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-
 import '../../../constants/list.dart';
 import 'adress_location_view.dart';
 import 'google_map_view.dart';
@@ -31,7 +30,7 @@ class _AdressViewState extends State<AdressView> {
           backgroundColor: ConstantColors().mainBlue,
           title: Text(
             widget.contest.point.toString() + " points 🏆",
-            style: TextStyle(fontSize: 22, fontFamily: "Lato"),
+            style: const TextStyle(fontSize: 22, fontFamily: "Lato"),
           ),
         ),
         body: Center(
@@ -175,24 +174,33 @@ class _AdressViewState extends State<AdressView> {
           scrollDirection: Axis.horizontal,
           itemCount: 6,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      minRadius: 40,
-                      backgroundImage: AssetImage(
-                          "lib/assets/images/${Lists().user_images[index]}"),
-                    ),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      Lists().user_names[index],
-                      style: const TextStyle(fontFamily: "Lato", fontSize: 12),
-                    )
-                  ],
+            return InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileView()));
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        minRadius: 40,
+                        backgroundImage: AssetImage(
+                            "lib/assets/images/${Lists().userImages[index]}"),
+                      ),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      Text(
+                        Lists().userNames[index],
+                        style:
+                            const TextStyle(fontFamily: "Lato", fontSize: 12),
+                      )
+                    ],
+                  ),
                 ),
               ),
             );

@@ -76,7 +76,7 @@ class ShopView extends StatelessWidget {
                         children: [
                           Image.asset("lib/assets/icons/coin.png"),
                           const Text(
-                            "2000",
+                            "1500",
                             style: TextStyle(
                                 fontFamily: "Futura",
                                 color: Colors.white,
@@ -100,8 +100,8 @@ class ShopView extends StatelessWidget {
       child: GridView.builder(
         itemCount: 4,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 0.8, mainAxisSpacing: 100),
-        padding: const EdgeInsets.only(top: 60),
+            crossAxisCount: 2, childAspectRatio: 0.8, mainAxisSpacing: 10),
+        padding: const EdgeInsets.only(top: 20),
         itemBuilder: (context, index) {
           return ShopCard(
             index: index,

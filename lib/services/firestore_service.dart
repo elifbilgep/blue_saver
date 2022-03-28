@@ -14,7 +14,8 @@ class FirestoreService {
       points,
       facebookURL,
       twitterURL,
-      instagramURL}) async {
+      instagramURL,
+      profilePictureURL}) async {
     await _firestore.collection("savers").doc(id).set({
       "id": id,
       "email": email,
@@ -24,18 +25,9 @@ class FirestoreService {
       "points": points,
       "facebookURL": facebookURL,
       "twitterURL": twitterURL,
-      "instagramURL": instagramURL
+      "instagramURL": instagramURL,
+      "profilePictureURL": profilePictureURL,
     });
-
-    Future<Saver> getSaver(id) async {
-      DocumentSnapshot doc = await _firestore.collection("saver").doc(id).get();
-      if (doc.exists) {
-        Saver saver = Saver.createFromDoc(doc);
-        print("saver " + saver.id!);
-        return saver;
-      }
-      throw '';
-    }
   }
 
   Future<List<Contest>> getContests() async {
@@ -43,5 +35,21 @@ class FirestoreService {
     var contests =
         snapshot.docs.map((doc) => Contest.createFromDoc(doc)).toList();
     return contests;
+  }
+
+  Future<Saver> getSaver(id) async {
+    try {
+      DocumentSnapshot doc = await _firestore.collection("saver").doc(id).get();
+      if (doc.exists) {
+        print("doc exists");
+        Saver saver = Saver.createFromDoc(doc);
+
+        return saver;
+      }
+      throw '';
+    } catch (e) {
+      print(e);
+    }
+    throw "error";
   }
 }

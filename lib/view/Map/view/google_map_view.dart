@@ -16,9 +16,9 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
+  // ignore: unused_field
   Position? _currentPosition;
 
-  @override
   final Completer<GoogleMapController> _controller = Completer();
 
   late final CameraPosition _kGooglePlex = CameraPosition(
@@ -55,7 +55,7 @@ class MapSampleState extends State<MapSample> {
         _currentPosition = position;
       });
     }).catchError((e) {
-      throw ("error occured" + e);
+      throw (e);
     });
   }
 }

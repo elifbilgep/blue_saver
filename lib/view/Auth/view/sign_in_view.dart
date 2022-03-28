@@ -1,5 +1,4 @@
 import 'package:blue_savers/constants/blue_header.dart';
-import 'package:blue_savers/constants/colors.dart';
 import 'package:blue_savers/view/Auth/view/sign_up_view.dart';
 import 'package:blue_savers/view/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +6,12 @@ import 'package:provider/provider.dart';
 
 import '../../../services/auth_service.dart';
 
+// ignore: must_be_immutable
 class SignInView extends StatelessWidget {
-  SignInView({Key? key}) : super(key: key);
-  final _formKey2 = GlobalKey<FormState>();
   String? email;
   String? password;
+  SignInView({Key? key}) : super(key: key);
+  final _formKey2 = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +51,7 @@ class SignInView extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 onSaved: ((newValue) => email = newValue),
                 decoration: InputDecoration(
                   label: Text(
@@ -73,6 +74,7 @@ class SignInView extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
+                obscureText: true,
                 onSaved: ((newValue) => password = newValue),
                 decoration: InputDecoration(
                   label: Text(
@@ -121,8 +123,8 @@ class SignInView extends StatelessWidget {
   buildAlreadyHaveOne(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignUpView()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const SignUpView()));
       },
       child: const Text(
         "Don't have account?",
@@ -140,7 +142,7 @@ class SignInView extends StatelessWidget {
     try {
       await _authService.signInWithEmail(email!, password!);
     } catch (error) {
-      print("error" + error.toString());
+      throw ("error" + error.toString());
     }
   }
 }

@@ -1,22 +1,5 @@
 class Lists {
-  List<String> home_contest_places_photo = [
-    "cınar_beach.png",
-    "uzunyali_beach.jpeg",
-    "deneme.jpeg"
-  ];
-  List<String> contest_palces_name = [
-    "Çınar Beach, Akyaka",
-    "Uzunali Beach, Marmaris",
-    "Shell Beach, Bodrum"
-  ];
-
-  List<String> contest_palces_hour = [
-    "13:00 - 17:00",
-    "14:00 - 16:00",
-    "13:00 - 17:00",
-  ];
-
-  List<String> news_image = ["whale.jpeg", "seal.jpg", "fishers.jpg"];
+  List<String> newsImage = ["whale.jpeg", "seal.jpg", "fishers.jpg"];
 
   List<String> news = [
     "‘There’s hope’ for North Atlantic right whales: Q&A with filmmaker Nadine Pequeneza",
@@ -24,7 +7,7 @@ class Lists {
     "‘There’s hope’ for North Atlantic right whales: Q&A with filmmaker Nadine Pequeneza"
   ];
 
-  List<String> user_images = [
+  List<String> userImages = [
     "girl1.jpeg",
     "boy1.jpeg",
     "girl2.jpeg",
@@ -33,8 +16,8 @@ class Lists {
     "boy3.jpeg"
   ];
 
-  List<String> user_names = [
-    "mary__",
+  List<String> userNames = [
+    "elifbilgep",
     "jackie123",
     "annee_j",
     "aykt_ty",
@@ -42,23 +25,18 @@ class Lists {
     "vladmr11"
   ];
 
-  List<String> shop_items_images = [
+  List<String> shopItemsImages = [
     "tote_bag.png",
-    "thermos.png",
+    "termos.png",
     "tshirt.png",
     "cup.png"
   ];
 
-  List<String> shop_items_names = [
-    "Tote bag",
-    "Hidro Flask",
-    "Tshirt",
-    "Tote Bag"
-  ];
-  List<String> shop_items_prise = [
-    "200 point",
+  List<String> shopItemsNames = ["Tote bag", "Hidro Flask", "Tshirt", "Cup"];
+  List<String> shopItemsPrise = [
+    "500 point",
     "600 point",
     "500 point",
-    "500 point"
+    "400 point"
   ];
 }

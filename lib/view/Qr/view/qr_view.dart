@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -28,7 +27,8 @@ class _QrViewState extends State<QrView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: Image.asset(
+            "lib/assets/images/qr_read.png") /* Column(
         children: <Widget>[
           Expanded(
             flex: 5,
@@ -47,22 +47,7 @@ class _QrViewState extends State<QrView> {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  void _onQRViewCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
+      ), */
+        );
   }
 }
