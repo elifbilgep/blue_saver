@@ -39,13 +39,13 @@
 
 
  <p align= "center" >
-  <img width=500
+  <img width=350
        src = "https://user-images.githubusercontent.com/58171409/161056488-d38e569e-7937-4513-8a86-a697b7dc71dd.png" alt ="">
 
 </p>
 
 <p align= "center" >
-  <img width=500
+  <img width=350
        src = "https://user-images.githubusercontent.com/58171409/161056782-f573936a-a0fd-4788-b9a5-7f6bcf38b04c.png" alt ="">
 
 </p>
