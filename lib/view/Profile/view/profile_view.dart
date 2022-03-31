@@ -1,10 +1,7 @@
-import 'package:blue_savers/services/firestore_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../constants/list.dart';
 import '../../../models/saver.dart';
-import '../../../services/auth_service.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -102,7 +99,7 @@ class _ProfileViewState extends State<ProfileView> {
   buildUserDetails() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 25),
-      height: 160,
+      height: 180,
       width: double.infinity,
       child: Column(
         children: [
@@ -177,7 +174,7 @@ class _ProfileViewState extends State<ProfileView> {
             ],
           ),
           const Spacer(),
-          /* Row(
+          Row(
             children: [
               SizedBox(
                 height: 40,
@@ -199,7 +196,7 @@ class _ProfileViewState extends State<ProfileView> {
               ),
               const Icon(Icons.arrow_forward_ios)
             ],
-          ), */
+          ),
         ],
       ),
     );

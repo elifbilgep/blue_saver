@@ -139,6 +139,7 @@ class SignInView extends StatelessWidget {
     debugPrint("TIKLANDI");
     final _authService = Provider.of<Auth>(context, listen: false);
     _formKey2.currentState?.save();
+
     try {
       await _authService.signInWithEmail(email!, password!);
     } catch (error) {

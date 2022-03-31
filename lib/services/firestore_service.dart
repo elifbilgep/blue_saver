@@ -41,6 +41,7 @@ class FirestoreService {
     try {
       DocumentSnapshot doc = await _firestore.collection("saver").doc(id).get();
       if (doc.exists) {
+        // ignore: avoid_print
         print("doc exists");
         Saver saver = Saver.createFromDoc(doc);
 
@@ -48,6 +49,7 @@ class FirestoreService {
       }
       throw '';
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
     throw "error";

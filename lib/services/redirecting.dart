@@ -1,6 +1,5 @@
 import 'package:blue_savers/services/auth_service.dart';
 import 'package:blue_savers/view/Home/view/bottom_menu_view.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +14,7 @@ class Redirecting extends StatefulWidget {
 }
 
 class _RedirectingState extends State<Redirecting> {
+  // ignore: unused_field
   String? _activeUserId;
 
   @override
